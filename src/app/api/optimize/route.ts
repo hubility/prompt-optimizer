@@ -95,7 +95,7 @@ export async function POST(request: NextRequest) {
   `;
 
     const response = await ai.models.generateContent({
-      model: "gemini-flash-latest",
+      model: "gemini-2.5-pro",
       contents: metaPrompt,
       config: {
         responseMimeType: "application/json",
@@ -104,7 +104,7 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    const jsonText = response.text.trim();
+    const jsonText = response?.text?.trim() || '';
     const parsedResponse = JSON.parse(jsonText);
 
     if (!parsedResponse.optimized_prompt || !Array.isArray(parsedResponse.improvements) || !Array.isArray(parsedResponse.tips) || !Array.isArray(parsedResponse.techniques_applied)) {

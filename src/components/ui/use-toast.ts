@@ -90,6 +90,7 @@ export function useToast() {
   const toast = React.useCallback(
     ({ title, description, ...props }: Omit<ToasterToast, "id">) => {
       return dispatchToast({
+        id: Math.random().toString(36).slice(2),
         title,
         description,
         ...props,

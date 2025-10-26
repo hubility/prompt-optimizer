@@ -35,10 +35,14 @@ export const authOptions: NextAuthOptions = {
           return null
         }
 
+        if (!user.email) {
+          return null
+        }
+
         return {
           id: user.id,
           email: user.email,
-          name: user.name,
+          name: user.name || "",
         }
       }
     })
@@ -48,7 +52,7 @@ export const authOptions: NextAuthOptions = {
   },
   pages: {
     signIn: "/auth/login",
-    signUp: "/auth/register",
+    newUser: "/auth/register",
   },
   callbacks: {
     async jwt({ token, user }) {

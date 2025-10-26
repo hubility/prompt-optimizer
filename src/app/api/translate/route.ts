@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
     const prompt = `Translate the following text to ${targetLanguage}. The original text is in Markdown format, so preserve the Markdown syntax (like ##, *, **, etc.) in the translated text. Return ONLY the translated Markdown text, without any introductory phrases, comments, or explanations.\n\nTEXT TO TRANSLATE:\n"""\n${text}\n"""`;
 
     const response = await ai.models.generateContent({
-      model: "gemini-flash-latest",
+      model: "gemini-2.5-pro",
       contents: prompt,
       config: {
         temperature: 0.1,

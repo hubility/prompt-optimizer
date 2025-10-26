@@ -12,11 +12,11 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-const getNestedTranslation = (obj: any, key: string): string => {
+const getNestedTranslation = (obj: Translations, key: string): string => {
   // The translation object uses a flat structure with dot-notation keys (e.g., 'sidebar.title').
   // The previous implementation incorrectly tried to traverse a nested object.
   // This direct property access correctly retrieves the translation for the given key.
-  return obj[key] || key;
+  return (obj as Record<string, string>)[key] || key;
 };
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {

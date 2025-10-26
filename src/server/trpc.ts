@@ -23,13 +23,13 @@ const t = initTRPC.context<Context>().create({
 });
 
 // Middleware de logging para debug
-const loggerMiddleware = t.middleware(async ({ path, type, next, rawInput }) => {
+const loggerMiddleware = t.middleware(async ({ path, type, next, input }) => {
   console.log('📥 tRPC Request:', {
     path,
     type,
-    rawInput,
-    inputType: typeof rawInput,
-    isArray: Array.isArray(rawInput),
+    input,
+    inputType: typeof input,
+    isArray: Array.isArray(input),
   });
 
   const result = await next();

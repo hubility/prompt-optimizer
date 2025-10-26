@@ -17,5 +17,11 @@
     "ui": "@/components/ui",
     "lib": "@/lib",
     "hooks": "@/hooks"
-  }
+  },
+  "registries": {
+    "@kibo-patterns": {
+        "url": "http://localhost:8000/r/{name}.json"
+      }
+    }
+  
 }
