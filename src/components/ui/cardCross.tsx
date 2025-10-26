@@ -1,6 +1,8 @@
 import * as React from "react"
+
 import { cn } from "@/lib/utils"
 
+// Componente de cruz centrada
 const Cross = ({ className }: { className?: string }) => (
   <div className={cn("absolute w-2 h-2 pointer-events-none", className)}>
     <div className="absolute top-1/2 left-0 w-full h-[1px] bg-current -translate-y-1/2" />
@@ -10,20 +12,11 @@ const Cross = ({ className }: { className?: string }) => (
 
 type CardProps = React.ComponentProps<"div"> & {
   containerClassName?: string
-  crossClassName?: string
 }
 
-function Card({
-  className,
-  containerClassName,
-  crossClassName,
-  children,
-  ...props
-}: CardProps) {
-  const crossColor = crossClassName ? cn(crossClassName) : undefined
-
+function CardCross({ className, containerClassName, children, ...props }: CardProps) {
   return (
-    <div className={cn("relative p-1", containerClassName)}>
+    <div className={cn(containerClassName)}>
       <div
         data-slot="card"
         className={cn(
@@ -32,10 +25,12 @@ function Card({
         )}
         {...props}
       >
-        <Cross className={cn("-top-[4px] -left-[4px]", crossColor)} />
-        <Cross className={cn("-top-[4px] -right-[4px]", crossColor)} />
-        <Cross className={cn("-bottom-[4px] -left-[4px]", crossColor)} />
-        <Cross className={cn("-bottom-[4px] -right-[4px]", crossColor)} />
+        {/* Cruces decorativas en las 4 esquinas */}
+        <Cross className="-top-[4px] -left-[4px]" />
+        <Cross className="-top-[4px] -right-[4px]" />
+        <Cross className="-bottom-[4px] -left-[4px]" />
+        <Cross className="-bottom-[4px] -right-[4px]" />
+
         {children}
       </div>
     </div>
@@ -47,7 +42,7 @@ function CardHeader({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="card-header"
       className={cn(
-        "@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-2 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6",
+        "@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6",
         className
       )}
       {...props}
@@ -85,6 +80,7 @@ function CardAction({ className, ...props }: React.ComponentProps<"div">) {
       )}
       {...props}
     />
+
   )
 }
 
@@ -109,7 +105,7 @@ function CardFooter({ className, ...props }: React.ComponentProps<"div">) {
 }
 
 export {
-  Card,
+  CardCross,
   CardHeader,
   CardFooter,
   CardTitle,

@@ -124,7 +124,7 @@ export const PromptForm: React.FC<PromptFormProps> = ({ onSubmit, isLoading, ini
           onChange={(e) => setOriginalPrompt(e.target.value)}
           maxLength={MAX_PROMPT_LENGTH}
           placeholder={t('form.originalPrompt.placeholder')}
-          className="bg-white border-border-light focus-visible:ring-primary resize-none"
+          className="h-[150px] bg-white border-border-light focus-visible:ring-primary resize-none"
         />
         <p className="text-xs text-text-secondary-light text-right">
           {originalPrompt.length}/{MAX_PROMPT_LENGTH}
@@ -168,7 +168,7 @@ export const PromptForm: React.FC<PromptFormProps> = ({ onSubmit, isLoading, ini
       <Button
         type="submit"
         disabled={isLoading || !originalPrompt.trim()}
-        className="w-full bg-black hover:bg-accent-black/90 text-white font-semibold"
+        className="w-full cursor-pointer bg-primary hover:bg-primary/90 text-white font-semibold"
         size="lg"
       >
         {isLoading ? (

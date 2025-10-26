@@ -79,7 +79,7 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col lg:flex-row">
+    <div className="h-screen flex flex-col lg:flex-row">
       <Sidebar
         history={history}
         onSelect={handleSelectHistory}
@@ -88,8 +88,8 @@ export default function Home() {
         initialData={activePromptData}
         onClearHistory={() => updateHistory([])}
       />
-      <main className="w-full flex-grow bg-dark-gray text-text-primary-dark p-4 sm:p-6 lg:p-8">
-          <div className="w-full h-full flex items-center justify-center">
+      <main className="w-full flex-1 min-h-0 flex flex-col bg-dark-gray text-text-primary-dark p-4 sm:p-6 lg:p-8 overflow-hidden">
+          <div className="w-full flex flex-1 flex-col min-h-0">
             {isLoading && (
               <div className="flex flex-col items-center justify-center text-text-secondary-dark text-center px-4">
                 <Sparkles className="h-12 w-12 sm:h-16 sm:w-16 animate-pulse text-accent-primary" />

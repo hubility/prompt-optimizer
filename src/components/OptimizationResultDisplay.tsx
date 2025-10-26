@@ -89,9 +89,13 @@ export const OptimizationResultDisplay: React.FC<OptimizationResultDisplayProps>
   }
 
   return (
-    <div className="w-full h-full flex flex-col gap-6 sm:gap-8 lg:gap-10">
-        <Card className="bg-card-dark border-border-dark flex-grow flex flex-col">
-            <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-3 sm:space-y-0 pb-4">
+    <div className="w-full flex-1 min-h-0 flex flex-col gap-6 sm:gap-8 lg:gap-10">
+        <Card
+          crossClassName="text-white/50"
+          containerClassName="flex-1 min-h-0"
+          className="bg-card-dark text-secondary border-border-dark flex-1 min-h-0"
+        >
+            <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-3 sm:space-y-0 pb-4 flex-shrink-0">
                 <CardTitle className="text-xl sm:text-2xl font-bold text-text-primary-dark">
                     {t('results.title')}
                 </CardTitle>
@@ -164,8 +168,8 @@ export const OptimizationResultDisplay: React.FC<OptimizationResultDisplayProps>
                 </div>
             </CardHeader>
 
-            <CardContent className="flex-grow flex flex-col min-h-0">
-                <Tabs value={activeTab} onValueChange={setActiveTab} className="flex-grow flex flex-col">
+            <CardContent className="flex flex-1 min-h-0 flex-col">
+                <Tabs value={activeTab} onValueChange={setActiveTab} className="flex flex-1 min-h-0 flex-col">
                     <TabsList className="bg-transparent border-b border-border-dark rounded-none h-auto p-0 gap-0">
                         <TabsTrigger
                             value="original"
@@ -184,7 +188,7 @@ export const OptimizationResultDisplay: React.FC<OptimizationResultDisplayProps>
                         ))}
                     </TabsList>
 
-                    <div className="bg-dark-gray border-x border-b border-border-dark rounded-b-md flex-grow overflow-y-auto p-6">
+                    <div className="bg-dark-gray border-x border-b border-border-dark rounded-b-md overflow-y-auto p-6 flex-1 min-h-0">
                         <TabsContent value="original" className="mt-0">
                             <MarkdownDisplay content={result.optimized_prompt} />
                         </TabsContent>
@@ -209,7 +213,7 @@ export const OptimizationResultDisplay: React.FC<OptimizationResultDisplayProps>
                 </Tabs>
             </CardContent>
         </Card>
-
+ {/*
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-10">
             <Card className="bg-card-dark border-border-dark">
                 <CardHeader>
@@ -230,7 +234,7 @@ export const OptimizationResultDisplay: React.FC<OptimizationResultDisplayProps>
                     </ul>
                 </CardContent>
             </Card>
-
+            
             <Card className="bg-card-dark border-border-dark">
                 <CardHeader>
                     <CardTitle className="text-lg sm:text-xl font-semibold text-text-primary-dark">
@@ -248,8 +252,9 @@ export const OptimizationResultDisplay: React.FC<OptimizationResultDisplayProps>
                     </div>
                 </CardContent>
             </Card>
+            
         </div>
-
+*/}
         <SavePromptModal
           isOpen={isSaveModalOpen}
           onClose={() => setIsSaveModalOpen(false)}
